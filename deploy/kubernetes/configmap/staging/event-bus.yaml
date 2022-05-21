@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-know-event-bus
+  namespace: staging
+data:
+  PORT: '3000'

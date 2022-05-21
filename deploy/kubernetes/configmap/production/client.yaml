@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-know-client
+  namespace: production
+data:
+  PORT: '3000'

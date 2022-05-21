@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: know-moderation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: know-moderation
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: know-moderation
+        app.kubernetes.io/instance: all
+        app.kubernetes.io/version: latest
+        app.kubernetes.io/component: back
+        app.kubernetes.io/part-of: know-mini
+        app.kubernetes.io/managed-by: skaffold
+      name: know-moderation
+    spec:
+      containers:
+        - image: michaelact/know-moderation:latest
+          name: moderation
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: env-know-moderation
+            - configMapRef:
+                name: env-know-discovery
+      restartPolicy: Always

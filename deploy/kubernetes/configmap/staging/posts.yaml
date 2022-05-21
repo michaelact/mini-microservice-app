@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-know-posts
+  namespace: staging
+data:
+  PORT: '3000'

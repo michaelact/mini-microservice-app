@@ -1,0 +1,32 @@
+apiVersion: skaffold/v2beta18
+kind: Config
+metadata:
+  name: know-mini
+build:
+  artifacts:
+  - image: michaelact/know-client
+    context: client
+  - image: michaelact/know-comments
+    context: comments
+  - image: michaelact/know-moderation
+    context: moderation
+  - image: michaelact/know-posts
+    context: posts
+  - image: michaelact/know-query
+    context: query
+  tagPolicy:
+    gitCommit: {}
+  local:
+    useBuildkit: true
+deploy:
+  kubectl:
+    defaultNamespace: staging
+    manifests:
+    - ./deploy/kubernetes/configmap/staging/*
+    - ./deploy/kubernetes/apps/client/*
+    - ./deploy/kubernetes/apps/comments/*
+    - ./deploy/kubernetes/apps/event-bus/*
+    - ./deploy/kubernetes/apps/moderation/*
+    - ./deploy/kubernetes/apps/posts/*
+    - ./deploy/kubernetes/apps/query/*
+    - ./deploy/kubernetes/ingress/staging/*

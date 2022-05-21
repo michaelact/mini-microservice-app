@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-know-query
+  namespace: staging
+data:
+  PORT: '3000'
