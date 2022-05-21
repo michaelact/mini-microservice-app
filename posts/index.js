@@ -25,7 +25,7 @@ app.post("/posts", async (req, res) => {
         title,
     }
 
-    await axios.post("http://localhost:4005/events", {
+    await axios.post(`${process.env.EVENT_URL}/events`, {
         type: 'PostCreated',
         data: posts[id]
     })
@@ -37,6 +37,6 @@ app.post("/events", (req, res) => {
     return res.status(200).send();
 })
 
-app.listen(4000, () => {
-    console.log("posts service listening on port 4000")
+app.listen(process.env.PORT, () => {
+    console.log(`posts service listening on port ${process.env.PORT}`)
 })

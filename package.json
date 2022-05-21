@@ -8,7 +8,12 @@
   "license": "MIT",
   "workspaces": {
     "packages": [
-      "blog/**"
+      "client/**", 
+      "comments/**", 
+      "event-bus/**", 
+      "moderation/**", 
+      "posts/**", 
+      "query/**", 
     ]
   }
 }

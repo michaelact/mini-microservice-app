@@ -31,7 +31,7 @@ app.post("/posts/:id/comments", async (req, res) => {
 
     commentsByPostId[req.params.id] = [...comments, newComment];
 
-    await axios.post("http://localhost:4005/events", {
+    await axios.post(`${process.env.EVENT_URL}`, {
         type: 'CommentCreated',
         data: {
             ...newComment,
@@ -54,7 +54,7 @@ app.post("/events", async (req, res) => {
 
         comment.status = status;
 
-        await axios.post("http://localhost:4005/events", {
+        await axios.post(`${process.env.EVENT_URL}/events`, {
             type: 'CommentUpdated', 
             data: {...comment, postId}
         });
@@ -64,6 +64,6 @@ app.post("/events", async (req, res) => {
 })
 
 
-app.listen(4001, () => {
-    console.log("comments service listening on port 4001")
+app.listen(process.env.PORT, () => {
+    console.log(`comments service listening on port ${process.env.PORT}`)
 })

@@ -17,10 +17,10 @@ app.post('/events', async (req, res) => {
 
     events.push(event);
 
-    axios.post('http://localhost:4000/events', event).catch(err => { });
-    axios.post('http://localhost:4001/events', event).catch(err => { });
-    axios.post('http://localhost:4002/events', event).catch(err => { });
-    axios.post('http://localhost:4003/events', event).catch(err => { });
+    axios.post(`${process.env.POSTS_URL}/events`, event).catch(err => { });
+    axios.post(`${process.env.EVENT_URL}/events`, event).catch(err => { });
+    axios.post(`${process.env.QUERY_URL}/events`, event).catch(err => { });
+    axios.post(`${process.env.MODERATION_URL}/events`, event).catch(err => { });
 
     return res.send({ status: 'OK' })
 })
@@ -30,6 +30,6 @@ app.get("/events", (req, res) => {
 })
 
 
-app.listen(4005, () => {
-    console.log("event bus service listening on port 4005")
+app.listen(process.env.PORT, () => {
+    console.log(`event bus service listening on port ${process.env.PORT}`)
 })
