@@ -5,3 +5,4 @@ metadata:
   namespace: staging
 data:
   PORT: '3000'
+  NODE_OPTIONS: '--openssl-legacy-provider'

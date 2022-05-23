@@ -7,5 +7,5 @@ data:
   COMMENT_URL: 'http://know-comments:3000'
   EVENT_URL: 'http://know-event-bus:3000'
   MODERATION_URL: 'http://know-moderation:3000'
-  POSTS_URL: 'http://know-posts:3000'
+  POST_URL: 'http://know-posts:3000'
   QUERY_URL: 'http://know-query:3000'

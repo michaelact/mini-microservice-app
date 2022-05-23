@@ -26,4 +26,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: env-know-query
+            - configMapRef:
+                name: env-know-discovery
       restartPolicy: Always
